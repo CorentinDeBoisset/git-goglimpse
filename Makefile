@@ -17,5 +17,8 @@ clean:
 ${BIN_DIR}/${PACKAGE_NAME}: ${GO_FILES}
 	go build ${BUILD_FLAGS} -o $@
 
+.PHONY: install
+install:
+	go install ${BUILD_FLAGS}
 
-# TODO: install/uninstall
+# TODO investigate on uninstall

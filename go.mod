@@ -1,4 +1,4 @@
-module github.com/corentindeboisset/git-goglimpse
+module github.com/corentindeboisset/git-glimpse
 
 go 1.17
 
