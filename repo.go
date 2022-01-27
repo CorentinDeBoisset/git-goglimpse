@@ -87,13 +87,15 @@ func getTreeStatus(repo *git.Repository) (*TreeStatus, error) {
 	statusCount, _ := statusList.EntryCount()
 	for i := 0; i < statusCount; i++ {
 		statusEntry, err := statusList.ByIndex(i)
-		if err != nil {
+		if err == nil {
 			switch {
 			case statusEntry.Status&git.StatusCurrent != 0:
 				continue
 			case statusEntry.Status&git.StatusWtNew != 0:
 				status.UntrackedCount++
-			case statusEntry.Status&(git.StatusWtDeleted|git.StatusWtModified|git.StatusIndexRenamed|git.StatusIndexTypeChange) != 0:
+			case statusEntry.Status&(git.StatusWtDeleted|git.StatusWtModified|git.StatusWtRenamed|git.StatusWtTypeChange) != 0:
+				status.UnstagedCount++
+			case statusEntry.Status&(git.StatusIndexNew|git.StatusIndexModified|git.StatusIndexDeleted|git.StatusIndexRenamed|git.StatusIndexTypeChange) != 0:
 				status.StagedCount++
 			case statusEntry.Status&(git.StatusConflicted) != 0:
 				status.ConflictCount++
