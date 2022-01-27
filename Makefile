@@ -1,4 +1,4 @@
-VERSION = 0.0.1
+VERSION = 1.0.0
 
 PACKAGE_NAME := git-glimpse
 BIN_DIR := bin
