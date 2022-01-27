@@ -15,7 +15,7 @@ func calculatePrompt(config PromptConfiguration) (string, error) {
 
 	repo, err := git.OpenRepository(dir)
 	if err != nil {
-		if git.IsErrorCode(err, git.ErrNotFound) {
+		if git.IsErrorCode(err, git.ErrorCodeNotFound) {
 			return "", nil
 		}
 
