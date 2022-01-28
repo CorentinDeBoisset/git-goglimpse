@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	git "github.com/libgit2/git2go/v33"
 )
 
@@ -45,7 +43,9 @@ func getBranchStatus(repo *git.Repository) (*BranchStatus, error) {
 	// Get repository head
 	head, err := repo.Head()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get the current repository HEAD: %w", err)
+		// The repository HEAD does not exist, maybe the repo is empty and has no commit yet
+		status.HeadName = "<none>"
+		return status, nil
 	}
 	if head.IsBranch() {
 		status.HeadName = head.Shorthand()
