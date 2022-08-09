@@ -6,20 +6,27 @@ The particularity of this tool is that it is aimed at maximizing the performance
 
 ## Requirements
 
-* libgit2-dev
+* git2go with a static build (see below)
 * make
 * golang
 
 ## Installation
 
-You can build the program by running:
+This executable is heavily dependent on the git2go library, wich itself depends on libgit2. To ensure the usability in the long term, all these dependencies must be solved by building the binary statically. For this, you must first clone the git2go repository (in the same directory as this repository):
 
-    make all
+    git clone https://github.com/libgit2/git2go.git
+    cd git2go
+    git checkout v33.0.9
+    git submodule update --init
+    make install-static
 
-Then install it with
+You can then come back to this repository and build the program by running:
+
+    make
+
+You can also install it (in your GOPATH) with
 
     make install
-
 
 ## Configure for ZSH
 

@@ -1,10 +1,10 @@
-VERSION = 1.1.0
+VERSION = 1.1.1
 
 PACKAGE_NAME := git-glimpse
 BIN_DIR := bin
 GO_FILES := $(shell find . -type f -name '*.go')
 
-BUILD_FLAGS := -ldflags "-X main.ExecutableName=${PACKAGE_NAME} -X main.Version=${VERSION}"
+BUILD_FLAGS := -ldflags "-extldflags=-static -X main.ExecutableName=${PACKAGE_NAME} -X main.Version=${VERSION}" -tags static
 
 .PHONY: all
 all: ${BIN_DIR}/${PACKAGE_NAME}

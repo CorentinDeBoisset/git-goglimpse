@@ -13,3 +13,5 @@ require (
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/sys v0.0.0-20211205182925-97ca703d548d // indirect
 )
+
+replace github.com/libgit2/git2go/v33 => ../git2go
