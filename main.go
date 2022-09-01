@@ -46,6 +46,8 @@ func init() {
 		},
 	}
 
+	shellPromptCmd.Flags().BoolVar(&promptConfig.Debug, "debug", false, "Run the program with debug logs")
+
 	shellPromptCmd.Flags().StringVarP(&promptConfig.AheadSigil, "ahead-sigil", "a", "↑", "Sigil to signal the branch is ahead of the remote")
 	shellPromptCmd.Flags().StringVarP(&promptConfig.BehindSigil, "behind-sigil", "b", "↓", "Sigil to signal the branch is behind of the remote")
 	shellPromptCmd.Flags().StringVarP(&promptConfig.StagedSigil, "staged-sigil", "s", "●", "Sigil to signal there are staged edits")

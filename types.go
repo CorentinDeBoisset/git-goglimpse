@@ -10,6 +10,8 @@ type PromptConfiguration struct {
 	StashedSigil   string
 	CleanSigil     string
 	ZshMode        bool
+
+	Debug bool
 }
 
 type BranchStatus struct {

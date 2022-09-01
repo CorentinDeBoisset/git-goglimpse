@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	git "github.com/libgit2/git2go/v33"
@@ -13,9 +14,12 @@ func calculatePrompt(config PromptConfiguration) (string, error) {
 		return "", fmt.Errorf("failed to get the current directory: %w", err)
 	}
 
-	repo, err := git.OpenRepository(dir)
+	repo, err := git.OpenRepositoryExtended(dir, 0, "")
 	if err != nil {
 		if git.IsErrorCode(err, git.ErrorCodeNotFound) {
+			if promptConfig.Debug {
+				log.Println("The current directory is not a git repository")
+			}
 			return "", nil
 		}
 
